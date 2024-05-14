@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SayedHa.OpenAPIExplorer.ConsoleRunner": {
+        "commandName": "Project",
+        "commandLineArgs": "explore C:\\data\\mycode\\sayed-samples\\SayedHa.OpenAPIExplorer\\SayedHa.OpenAPIExplorer.ConsoleRunner\\assets\\petstore.swagger.json"
+    }
+  }
+}
