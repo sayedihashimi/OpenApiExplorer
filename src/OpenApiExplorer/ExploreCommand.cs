@@ -117,22 +117,8 @@ public class ExploreCommand : CommandBase {
 
 			foreach(var sec in document.Components.SecuritySchemes) {
 				sb.AppendLine($"  {sec.Value.Type}");
-				// sec.Key
-//				sec.Value.Name
-				//sec.Value.
-
 			}
-
-
-
-			//foreach(var sec in document.Components.SecuritySchemes) {
-			//	foreach (var secScheme in document.Components.SecuritySchemes) {
-			//		sb.Append("  ");
-			//		sb.Append(secScheme.Value.Name);
-			//	}
-			//}
 		}
-
 
 		if(document.Servers.Count > 0) {
 			sb.AppendLine();
@@ -143,10 +129,7 @@ public class ExploreCommand : CommandBase {
 			}
 		}
 
-
-
 		_reporter.WriteLine(sb.ToString());
-
 	}
 	protected void PrintoutEndpoints(List<DocPathWithOperation> endpoints) {
 		_reporter.WriteLine("Endpoints:");
@@ -170,24 +153,19 @@ public class ExploreCommand : CommandBase {
         
     }
     protected void PrintEndpointWithInfo(EndpointWithInfo endpoint) {
-		// get /api/Contact - Gets all contacts
-		//   Security: OAuth2
-		//     Scopes: 
-		//       read:contacts
-		//       write:contacts
-		// Parameters:
-		//   foo: string
-
 		var sb = new StringBuilder();
         sb.AppendLine();
         sb.Append($"{endpoint.OperationType.ToString()}");
         sb.Append($" {endpoint.Path}");
         if (!string.IsNullOrWhiteSpace(endpoint.Summary)) {
-            sb.AppendLine($" - {endpoint.Summary}");
+            sb.Append($" - {endpoint.Summary}");
         }
-        else {
-            sb.AppendLine();
-        }
+
+		if (endpoint.Operation.Deprecated) {
+			sb.Append(" *DEPRECATED*");
+		}
+
+		sb.AppendLine();
 
         if(endpoint.Security.Count > 0) {
 			sb.Append("  Security: ");
@@ -206,19 +184,23 @@ public class ExploreCommand : CommandBase {
         else {
 			sb.Append("    Security: None");
 		}
-		
 
         // print parameters
         if (endpoint.Parameters.Any()) {
 			sb.AppendLine("  Parameters: ");
 			foreach (var param in endpoint.Parameters) {
-				sb.Append($"    {param.Name}: {param.Schema.Type} - {param.Description}");
+				sb.Append($"    {param.Name}: {param.Schema.Type}");
+				if (!string.IsNullOrWhiteSpace(param.Description)) {
+					sb.Append($" - {param.Description}");
+				}
 				if (param.Required) {
-					sb.AppendLine(" (required)");
+					sb.Append(" (required)");
 				}
-				else {
-					sb.AppendLine();
+				if (param.In.HasValue) {
+					sb.Append($" [From: {param.In}]");
 				}
+
+				sb.AppendLine();
 			}
         }
         else {

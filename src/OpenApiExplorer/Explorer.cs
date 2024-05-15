@@ -63,6 +63,8 @@ public class EndpointWithInfo {
 			throw new ArgumentException($"Operation {opType} not found for path {path}");
 		}
 
+		Operation = foundOp.Value;
+
 		var security = foundOp.Value.Security;
 		foreach (var sec in security) {
 			Security.Add(sec);
@@ -85,4 +87,5 @@ public class EndpointWithInfo {
 	public List<OpenApiParameter> Parameters { get; set; } = new List<OpenApiParameter>();
 	// public List<OpenApiResponse> Response { get; set; } = new List<OpenApiResponse>();
 	public List<(string key,OpenApiResponse response)>ResponsesWithKey = new List<(string key, OpenApiResponse response)>();
+	public OpenApiOperation Operation { get; set; }
 }

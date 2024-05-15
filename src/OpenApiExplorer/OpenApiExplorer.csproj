@@ -14,7 +14,7 @@
 		<PackageId>sayedha.openapiexplorer.consolerunner</PackageId>
 		<Authors>Sayed Ibrahim Hashimi</Authors>
 		<Description>Prototype of a cli tool to explore OpenAPI files.</Description>
-		<Version>0.0.2</Version>
+		<Version>0.0.3</Version>
 		<Copyright>Copyright 2024 © Sayed Ibrahim Hashimi. All rights reserved.</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/sayedihashimi/OpenApiExplorer</PackageProjectUrl>
