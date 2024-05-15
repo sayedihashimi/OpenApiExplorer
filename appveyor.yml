@@ -9,7 +9,7 @@ before_build:
   - dotnet restore
 
 build:
-  project: SayedHa.Commands.sln
+  project: SayedHa.OpenAPIExplorer.sln
   publish_core_console: true
   verbosity: normal
 
