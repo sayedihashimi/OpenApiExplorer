@@ -6,7 +6,6 @@ init:
 - pwsh: if(test-path -LiteralPath ./ci.build.init.ps1){. ./ci.build.init.ps1}
 
 before_build:
-  - choco install dotnet-sdk --version 8.0.100
   - dotnet restore
 
 build:
@@ -15,7 +14,7 @@ build:
   verbosity: normal
 
 after_build:
-  - dotnet pack src/SayedHa.Commands/SayedHa.Commands.csproj
+  - dotnet pack src/OpenApiExplorer/OpenApiExplorer.csproj
 
 artifacts:
  - path: '**\nupkg\*.nupkg'
