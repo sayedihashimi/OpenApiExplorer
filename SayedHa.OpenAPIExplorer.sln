@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 		LICENSE = LICENSE
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenApiExplorer", "src\SayedHa.OpenAPIExplorer.ConsoleRunner\OpenApiExplorer.csproj", "{64968BA4-24AE-4232-9C7E-00C3516F0BCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenApiExplorer", "src\OpenApiExplorer\OpenApiExplorer.csproj", "{38FCA783-FF79-4F7B-A92B-FBED4CCE0969}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{64968BA4-24AE-4232-9C7E-00C3516F0BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64968BA4-24AE-4232-9C7E-00C3516F0BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64968BA4-24AE-4232-9C7E-00C3516F0BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64968BA4-24AE-4232-9C7E-00C3516F0BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38FCA783-FF79-4F7B-A92B-FBED4CCE0969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38FCA783-FF79-4F7B-A92B-FBED4CCE0969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38FCA783-FF79-4F7B-A92B-FBED4CCE0969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38FCA783-FF79-4F7B-A92B-FBED4CCE0969}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
