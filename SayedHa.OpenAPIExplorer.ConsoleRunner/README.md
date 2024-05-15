@@ -1,0 +1,1 @@
+Prototype of a CLI tool to explore OpenAPI specifications.

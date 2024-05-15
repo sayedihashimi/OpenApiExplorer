@@ -13,7 +13,7 @@ public class ExploreCommand : CommandBase {
     }
     public override Command CreateCommand() =>
         new Command(name: "explore", description: "Explorer an OpenAPI spec") {
-            CommandHandler.Create<string,bool>(async (openApiFilePath,verbose) => {
+            CommandHandler.Create<string,bool>((openApiFilePath,verbose) => {
                 _reporter.EnableVerbose = verbose;
 
 				var explorer = new Explorer(openApiFilePath);
@@ -21,8 +21,18 @@ public class ExploreCommand : CommandBase {
 
                 PrintApiInfo(explorer.Document!);
 
+				bool cancelRequested = false;
+				// Register the event handler for CTRL+C
+				Console.CancelKeyPress += (sender, e) => {
+					e.Cancel = true;
+					cancelRequested = true;
+				};
+
                 // wait for the user to select an endpoint
-                while (true) {
+				while (true) {
+					if (cancelRequested) {
+						break;
+					}
 					Console.WriteLine();
 					var endpoint = PromptForEndpoint(endpoints);
 
@@ -30,13 +40,12 @@ public class ExploreCommand : CommandBase {
 					PrintEndpointWithInfo(endpointWithInfo);
 				}
 
-                // added here to avoid async/await warning
-                await Task.Delay(1000);
+				return 0;
             }),
             ArgumentOpenApiFilePath(),
             OptionVerbose(),
         };
-    protected Option OptionPackages() =>
+	protected Option OptionPackages() =>
         new Option(new string[] { "--paramname" }, "TODO: update param description") {
             Argument = new Argument<string>(name: "paramname")
         };

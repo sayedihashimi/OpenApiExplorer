@@ -5,7 +5,7 @@ using System.CommandLine.Parsing;
 
 namespace SayedHa.OpenAPIExplorer.ConsoleRunner; 
 public class OpenApiExplorerProgram {
-    private Parser _parser;
+    private Parser? _parser;
     private ServiceCollection _services;
     private ServiceProvider _serviceProvider;
 

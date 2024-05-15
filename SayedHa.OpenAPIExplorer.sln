@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.34913.32
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SayedHa.OpenAPIExplorer.ConsoleRunner", "SayedHa.OpenAPIExplorer.ConsoleRunner\SayedHa.OpenAPIExplorer.ConsoleRunner.csproj", "{898A90FA-F48D-4875-81BA-335F517B6AB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenApiExplorer", "SayedHa.OpenAPIExplorer.ConsoleRunner\OpenApiExplorer.csproj", "{898A90FA-F48D-4875-81BA-335F517B6AB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
