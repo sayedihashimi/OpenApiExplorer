@@ -182,7 +182,7 @@ public class ExploreCommand : CommandBase {
 			}
 		}
         else {
-			sb.Append("    Security: None");
+			sb.AppendLine("    Security: None");
 		}
 
         // print parameters
@@ -190,8 +190,11 @@ public class ExploreCommand : CommandBase {
 			sb.AppendLine("  Parameters: ");
 			foreach (var param in endpoint.Parameters) {
 				sb.Append($"    {param.Name}: {param.Schema.Type}");
+				if (!string.IsNullOrWhiteSpace(param.Schema.Format)) {
+					sb.Append($" ({param.Schema.Format})");
+				}
 				if (!string.IsNullOrWhiteSpace(param.Description)) {
-					sb.Append($" - {param.Description}");
+					sb.Append($" - {param.Description.TrimEnd()}");
 				}
 				if (param.Required) {
 					sb.Append(" (required)");
