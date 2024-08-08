@@ -117,6 +117,70 @@ public class ExploreCommand : CommandBase {
 
 			foreach(var sec in document.Components.SecuritySchemes) {
 				sb.AppendLine($"  {sec.Value.Type}");
+
+				if(!string.IsNullOrEmpty(sec.Value.Name)) {
+					sb.AppendLine($"    Name: {sec.Value.Name}");
+				}
+				sb.AppendLine($"    In: {sec.Value.In}");
+				if (!string.IsNullOrEmpty(sec.Value.BearerFormat)) {
+					sb.AppendLine($"    Bearer Format: {sec.Value.BearerFormat}");
+				}
+				if(!string.IsNullOrEmpty(sec.Value.Description)) {
+					sb.AppendLine($"    Description: {sec.Value.Description}");
+				}
+				if(sec.Value.OpenIdConnectUrl != null) {
+					sb.AppendLine($"    OIDC URL: {sec.Value.OpenIdConnectUrl}");
+				}
+
+				if (sec.Value.Reference is not null && sec.Value.Reference is OpenApiReference secRef) {
+					if(!string.IsNullOrEmpty(secRef.Id)) {
+						sb.AppendLine($"    Id: {secRef.Id}");
+					}
+					if (secRef.ExternalResource != null) {
+						sb.AppendLine($"    ExternalResource: {secRef.ExternalResource}");
+					}
+					if(secRef.HostDocument != null) {
+						sb.AppendLine($"    HostDocument: {secRef.HostDocument}");
+					}
+					sb.AppendLine($"    IsExternal: {secRef.IsExternal}");
+					sb.AppendLine($"    IsFragment: {secRef.IsFragrament}");
+					sb.AppendLine($"    IsLocal: {secRef.IsLocal}");
+					if (!string.IsNullOrEmpty(secRef.ReferenceV2)) {
+						sb.AppendLine($"    ReferenceV2: {secRef.ReferenceV2}");
+					}
+					if (!string.IsNullOrEmpty(secRef.ReferenceV3)) {
+						sb.AppendLine($"    ReferenceV3: {secRef.ReferenceV3}");
+					}
+					if(secRef.Type != null) {
+						sb.AppendLine($"    Type: {secRef.Type}");
+					}
+				}
+
+				if (sec.Value.Flows != null) {
+					sb.AppendLine($"    Flows:");
+					if(sec.Value.Flows.AuthorizationCode != null) {
+						sb.AppendLine($"      AuthorizationCode: {sec.Value.Flows.AuthorizationCode}");
+					}
+					if(sec.Value.Flows.ClientCredentials != null) {
+						sb.AppendLine($"      ClientCredentials: {sec.Value.Flows.ClientCredentials}");
+					}
+					if(sec.Value.Flows.Implicit != null) {
+						sb.AppendLine($"      Authorization URL: {sec.Value.Flows.Implicit.AuthorizationUrl}");
+						if (sec.Value.Flows.Implicit.RefreshUrl != null) {
+							sb.AppendLine($"      RefreshUrl: {sec.Value.Flows.Implicit.RefreshUrl}");
+						}
+						if (sec.Value.Flows.Implicit.Scopes?.Keys?.Count > 0) {
+							sb.AppendLine("      Scopes: ");
+							sec.Value.Flows.Implicit.Scopes.ToList().ForEach(scope => {
+								sb.AppendLine($"        {scope.Key}: {scope.Value}");
+							});
+						}
+						if(sec.Value.Flows.Implicit.TokenUrl != null) {
+							sb.AppendLine($"      TokenUrl: {sec.Value.Flows.Implicit.TokenUrl}");
+						}
+					}
+				}
+
 			}
 		}
 
